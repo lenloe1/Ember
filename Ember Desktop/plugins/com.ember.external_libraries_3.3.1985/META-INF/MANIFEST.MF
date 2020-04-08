@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: External libraries for Ember Desktop
+Bundle-SymbolicName: com.ember.external_libraries
+Bundle-Version: 3.3.1985
+Bundle-Vendor: Silicon Laboratories, Inc.
+Bundle-ClassPath: .
+Export-Package: com.davekoelle,
+ com.udojava.evalex
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6

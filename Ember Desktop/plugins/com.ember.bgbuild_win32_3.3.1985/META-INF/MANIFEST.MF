@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: BgBuild Win32 Version
+Bundle-SymbolicName: com.ember.bgbuild_win32;singleton:=true
+Bundle-Version: 3.3.1985
+Bundle-Vendor: Silicon Labs
+Fragment-Host: com.silabs.ide.build.bgbuild
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Eclipse-PlatformFilter: (& (osgi.ws=win32) (osgi.os=win32))

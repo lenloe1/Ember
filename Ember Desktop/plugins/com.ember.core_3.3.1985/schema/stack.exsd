@@ -1,0 +1,320 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="com.ember.core" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appInfo>
+         <meta.schema plugin="com.ember.core" id="stack" name="Stack Version"/>
+      </appInfo>
+      <documentation>
+         Each version of stack we are supporting should implement this extension point.
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <annotation>
+         <appInfo>
+            <meta.element />
+         </appInfo>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="stackVersion" minOccurs="1" maxOccurs="unbounded"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="stackVersion">
+      <complexType>
+         <sequence minOccurs="1" maxOccurs="unbounded">
+            <element ref="profile" minOccurs="1" maxOccurs="unbounded"/>
+            <element ref="basedOn" minOccurs="0" maxOccurs="1"/>
+         </sequence>
+         <attribute name="major" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Stack major version
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="minor" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Stack minor version
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="build" type="string">
+            <annotation>
+               <documentation>
+                  Optional stack build number
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="description" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Full text description of this stack version
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="decoderCreator" type="string" use="required">
+            <annotation>
+               <documentation>
+                  EZSP decoder for this stack version.
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn="com.ember.workbench.stack.IDecoderCreator"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="type" use="required">
+            <annotation>
+               <documentation>
+                  Type of stack.
+               </documentation>
+            </annotation>
+            <simpleType>
+               <restriction base="string">
+                  <enumeration value="EMBERNET">
+                  </enumeration>
+                  <enumeration value="ZIGBEE">
+                  </enumeration>
+                  <enumeration value="IP">
+                  </enumeration>
+                  <enumeration value="FIFTEENFOUR">
+                  </enumeration>
+                  <enumeration value="RF4CE">
+                  </enumeration>
+                  <enumeration value="AUTO">
+                  </enumeration>
+                  <enumeration value="CUSTOM">
+                  </enumeration>
+                  <enumeration value="OWL">
+                  </enumeration>
+                  <enumeration value="CONNECT">
+                  </enumeration>
+                  <enumeration value="BLUETOOTH">
+                  </enumeration>
+               </restriction>
+            </simpleType>
+         </attribute>
+         <attribute name="apitrace" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="resource"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="ezspProvider" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn=":com.ember.workbench.decoder.IEzspProvider"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="nodeStateConfiguration" type="string">
+            <annotation>
+               <documentation>
+                  Optional node state configuration implementation.
+If it&apos;s not specified, then DefaultNodeStateConfiguration is used.
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn=":com.ember.workbench.core.INodeStateCacheConfiguration"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="deprecated" type="boolean">
+            <annotation>
+               <documentation>
+                  If this entire stack version is deprecated, set it to true here. Default is false\
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="profile">
+      <complexType>
+         <sequence minOccurs="0" maxOccurs="unbounded">
+            <element ref="property"/>
+         </sequence>
+         <attribute name="name" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="description" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="deprecated" type="boolean">
+            <annotation>
+               <documentation>
+                  If the profile is deprecated, set this to true. Default is false.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="inDevelopment" type="boolean">
+            <annotation>
+               <documentation>
+                  If a given stack is still in development, this attribute specifies that. Doing this, really results just in one thing:
+
+If you try to add this stack to unit tests, you will most probably get an exception about it.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="property">
+      <complexType>
+         <attribute name="name" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+            <simpleType>
+               <restriction base="string">
+                  <enumeration value="tree">
+                  </enumeration>
+                  <enumeration value="embernet">
+                  </enumeration>
+                  <enumeration value="ignoreSecurity">
+                  </enumeration>
+                  <enumeration value="zeroBitsForRouter">
+                  </enumeration>
+               </restriction>
+            </simpleType>
+         </attribute>
+         <attribute name="value" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="basedOn">
+      <complexType>
+         <attribute name="major" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="minor" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="build" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="apiInfo"/>
+      </appInfo>
+      <documentation>
+         See IStackVersion interface.
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="since"/>
+      </appInfo>
+      <documentation>
+         1.3
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="examples"/>
+      </appInfo>
+      <documentation>
+         [Enter extension point usage example here.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="implementation"/>
+      </appInfo>
+      <documentation>
+         [Enter information about supplied implementation of this extension point.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="copyright"/>
+      </appInfo>
+      <documentation>
+         (c) Ember, 2007
+      </documentation>
+   </annotation>
+
+</schema>

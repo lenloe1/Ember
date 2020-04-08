@@ -1,0 +1,2 @@
+This directory contains sources to jython for easier development. It is not part of build.
+This file is here so git doesn't delete this empty directory.

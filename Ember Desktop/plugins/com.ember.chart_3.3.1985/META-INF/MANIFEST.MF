@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: JFreeChart Core Plugin
+Bundle-SymbolicName: com.ember.chart
+Bundle-Version: 3.3.1985
+Bundle-Vendor: Silicon Laboratories, Inc.
+Require-Bundle: org.eclipse.swt,
+ com.silabs.external.jfreechart;bundle-version="1.0.0",
+ com.silabs.foundation.core_ui;bundle-version="1.0.0"
+Export-Package: com.ember.workbench.chart
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6

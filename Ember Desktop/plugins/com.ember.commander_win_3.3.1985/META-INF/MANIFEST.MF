@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: EnergyAware Designer for Windows
+Bundle-SymbolicName: com.ember.commander_win;singleton:=true
+Bundle-Version: 3.3.1985
+Fragment-Host: com.ember.commander;bundle-version="1.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Vendor: Silicon Laboratories, Inc.
+Eclipse-PlatformFilter: (osgi.os=win32)

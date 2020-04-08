@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Windows Proxem Fragment
+Bundle-SymbolicName: com.ember.emdll_win_proxem
+Bundle-Version: 3.3.1985
+Bundle-Vendor: Silicon Laboratories, Inc.
+Fragment-Host: com.ember.emdll;bundle-version="1.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Eclipse-PlatformFilter: (& (osgi.ws=win32) (osgi.os=win32))

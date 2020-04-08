@@ -1,0 +1,1066 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<!-- Copyright 2005 by Ember Corporation.  All rights reserved.    -->
+<!-- The EmberWorkbench Plugin -->
+
+<plugin>
+  <!-- Exposed Extension Points -->
+  <extension-point id="decoder" name="Decoder" schema="schema/decoder.exsd"/>
+  <extension-point id="demoFile" name="Demo File" schema="schema/demoFile.exsd"/>
+  <extension-point id="application" name="Application" schema="schema/application.exsd"/>
+  <extension-point id="adapterCreator" name="Adapter Creator" schema="schema/adapterCreator.exsd"/>
+  <extension-point id="packetTemplate" name="Packet Builder Template" schema="schema/packetTemplate.exsd"/>
+  <extension-point id="spec" name="XML spec file" schema="schema/spec.exsd"/>
+  <extension-point id="binaryimage" name="BinaryImage" schema="schema/binaryimage.exsd"/>
+  <extension-point id="script" name="Script" schema="schema/script.exsd"/>
+  <extension-point id="scriptInterface" name="Script Interface" schema="schema/scriptInterface.exsd"/>
+  <extension-point id="exporter" name="Stream Exporter" schema="schema/exporter.exsd"/>
+  <extension-point id="stack" name="Stack Version" schema="schema/stack.exsd"/>
+  <extension-point id="radioInfoDecoder" name="RadioInfoDecoder" schema="schema/radioInfoDecoder.exsd"/>
+  <extension-point id="importer" name="Event Importer" schema="schema/importer.exsd"/>
+  <extension-point id="grouper" name="Event Grouper" schema="schema/grouper.exsd"/>
+  <extension-point id="securityProfile" name="Security Profile" schema="schema/securityProfile.exsd"/>
+  <extension-point id="version" name="Version" schema="schema/version.exsd"/>
+  <extension-point id="defragmenter" name="Defragmenter" schema="schema/defragmenter.exsd"/>
+  <extension-point id="frameNames" name="Frame names" schema="schema/frameNames.exsd"/>
+  <extension-point id="fieldNames" name="Field names" schema="schema/fieldNames.exsd"/>
+  <extension-point id="neighborExtractor" name="Neighbor Extractor" schema="schema/neighborExtractor.exsd"/>
+  <extension-point id="fileParser" name="Event Log File Parser" schema="schema/fileParser.exsd"/>
+  <extension-point id="frameDecoder" name="Single frame decoder" schema="schema/frameDecoder.exsd"/>
+  <extension-point id="packetDecoder" name="Packet decoder" schema="schema/packetDecoder.exsd"/>
+  <extension-point id="nodeControl" name="Application Node Control" schema="schema/nodeControl.exsd"/>
+  <extension-point id="report" name="Report" schema="schema/report.exsd"/>
+  <extension-point id="shellTranslation" name="Translation implementations for shell" schema="schema/shellTranslation.exsd"/>
+  <extension-point id="decryption" name="Decryption algorithm" schema="schema/decryption.exsd"/>
+  <extension-point id="synthesizer" name="Synthesizer" schema="schema/synthesizer.exsd"/>
+  <extension-point id="streamVisualization" name="Visualization for the capture stream" schema="schema/streamVisualization.exsd"/>
+  <extension-point id="serialProvider" name="Serial Provider" schema="schema/serialProvider.exsd"/>
+  <extension-point id="connectionEnabler" name="Connection Enabler" schema="schema/connectionEnabler.exsd"/>
+  <extension-point id="stackType" name="Stack types for decoding" schema="schema/stackType.exsd"/>
+  <extension-point id="upgradeRule" name="Upgrade Rule" schema="schema/upgradeRule.exsd"/>
+  <extension-point id="aliasCreator" name="Alias Item and Creator" schema="schema/aliasCreator.exsd"/>
+
+  <!-- Preference Pages Extension -->
+  <extension point="org.eclipse.ui.preferencePages">
+     <page
+           category="com.ember.workbench.gui.preference.PreferencePage.file"
+           class="com.ember.workbench.gui.preference.NetworkPreferencePage"
+           id="com.ember.workbench.gui.preference.NetworkPreferencePage"
+           name="Decoding">
+     </page>
+     <page
+           category="com.ember.workbench.gui.preference.PreferencePage.file"
+           class="com.ember.workbench.gui.preference.NodeIconPreferencePage"
+           id="com.ember.workbench.gui.preference.NodeIconPreferencePage"
+           name="Node Icons">
+     </page>
+     <page
+           category="com.ember.workbench.gui.preference.PreferencePage.file"
+           class="com.ember.workbench.gui.preference.PreferencePage"
+           id="com.ember.workbench.gui.preference.PreferencePage.stream"
+           name="Stream">
+     </page>
+     <page
+           category="com.ember.workbench.gui.preference.PreferencePage.file"
+           class="com.ember.workbench.gui.preference.PreferencePage"
+           id="com.ember.workbench.gui.preference.PreferencePage.timeline"
+           name="Timeline">
+     </page>
+     <page name="Network Analyzer"
+     	class="com.ember.workbench.gui.preference.PreferencePage"
+     	id="com.ember.workbench.gui.preference.PreferencePage.file">
+     </page>
+     <page
+           category="com.ember.workbench.gui.preference.PreferencePage.file"
+           class="com.ember.workbench.gui.preference.PreferencePage"
+           id="com.ember.workbench.gui.preference.PreferencePage.optionalDialogs"
+           name="Optional Dialogs">
+     </page>
+     <page
+           category="com.silabs.foundation.device.ui.preference.DeviceManagerPreferencePage"
+           class="com.ember.workbench.gui.preference.BackchannelPreferencePage"
+           id="com.ember.workbench.gui.preference.BackchannelPreferencePage"
+           name="Wireless Adapter Options">
+     </page>
+     <page name="InSight Adapters"
+        category="com.silabs.foundation.device.ui.preference.DeviceManagerPreferencePage"
+     	class="com.ember.workbench.gui.preference.UDPDiscoveryPreferencePage"
+     	id="com.ember.workbench.gui.preference.UDPDiscoveryPreferencePage">
+     </page>
+     <!--<page name="TCP"
+        category="com.ember.workbench.gui.preference.BackchannelPreferencePage"
+        class="com.ember.workbench.gui.preference.TCPDiscoveryPreferencePage"
+     	id="com.ember.workbench.gui.preference.TCPDiscoveryPreferencePage">
+     </page> -->
+     <page
+           category="com.ember.workbench.gui.preference.BackchannelPreferencePage"
+           class="com.ember.workbench.gui.preference.AppUploadPreferencePage"
+           id="com.ember.workbench.gui.preference.AppUploadPreferencePage"
+           name="Loaders and Binary Images">
+     </page>
+     <page
+           category="com.ember.workbench.gui.preference.NetworkPreferencePage"
+           class="com.ember.workbench.gui.preference.SecurityPreferencePage"
+           id="com.ember.workbench.gui.preference.SecurityPreferencePage"
+           name="Security Keys">
+     </page>
+     <page
+           category="com.ember.workbench.gui.preference.NetworkPreferencePage"
+           class="com.ember.workbench.gui.preference.StackPreferencePage"
+           id="com.ember.workbench.gui.preference.StackPreferencePage"
+           name="Stack Versions">
+     </page>
+     <page
+           category="com.ember.workbench.gui.preference.NetworkPreferencePage"
+           class="com.ember.workbench.gui.preference.GrouperPreferencePage"
+           id="com.ember.workbench.gui.preference.GrouperPreferencePage"
+           name="Transaction groupers">
+     </page>
+     <page
+           category="com.ember.workbench.gui.preference.PreferencePage.file"
+           class="com.ember.workbench.gui.preference.ConnectivityPreferencePage"
+           id="com.ember.workbench.gui.preference.ConnectivityPreferencePage"
+           name="Connectivity Display">
+     </page>
+     <page
+           category="com.ember.workbench.gui.preference.NetworkPreferencePage"
+           class="com.ember.workbench.report.ReportingPreferencePage"
+           id="com.ember.workbench.report.ReportingPreferencePage"
+           name="Reports">
+     </page>
+     <page
+           category="com.ember.workbench.gui.preference.PreferencePage.file"
+           class="com.ember.workbench.gui.preference.StreamVisualizationPreferencePage"
+           id="com.ember.workbench.gui.preference.StreamVisualizationPreferencePage"
+           name="Stream Visualization">
+     </page>
+  </extension>
+    
+  <!-- Perspective Extension Point -->
+  <extension
+        id="perspective"
+        name="Main"
+        point="org.eclipse.ui.perspectives">
+    <perspective
+          class="com.ember.workbench.gui.DefaultPerspective"
+          fixed="false"
+          icon="icons/perspective_na.png"
+          id="com.ember.workbench.gui.DefaultPerspective"
+          name="Network Analyzer">
+       <description>
+          Network analyzer perspective allows user to focus on capturing and analyzing network traffic.
+       </description>
+    </perspective>
+  </extension>
+  
+  
+  <!-- Pop up menu extensions -->
+  <extension point="org.eclipse.ui.popupMenus">
+      
+    <!-- Organize Map -->
+      
+    <!-- Packet entry: popups for the packet view tree nodes -->
+    <objectContribution
+          adaptable="false"
+          objectClass="com.ember.workbench.gui.view.IPacketEntry"
+          id="com.ember.workbench.gui.view.IPacketEntry.Contribution">
+      <action
+        id="com.ember.workbench.gui.action.PacketViewAction.INFO"
+        label="Information..."
+        style="push"
+        menubarPath="additions"
+        enablesFor="1"
+        class="com.ember.workbench.gui.action.PacketViewAction">
+      </action>
+    </objectContribution>
+    
+    <objectContribution
+          adaptable="false"
+          objectClass="com.ember.workbench.gui.view.IPacketFrame"
+          id="com.ember.workbench.gui.view.IPacketFrame.Contribution">
+      <action
+        id="com.ember.workbench.gui.action.FrameMatchAction"
+        label="Filter by frame pattern..."
+        style="push"
+        menubarPath="additions"
+        enablesFor="1"
+        class="com.ember.workbench.gui.action.FrameMatchAction">
+      </action>
+    </objectContribution>
+    
+    <!-- Packet entry: popups for the packet field tree nodes -->
+    <objectContribution
+      adaptable="false"
+      objectClass="com.ember.workbench.gui.view.IPacketField"
+      id="com.ember.workbench.gui.view.IPacketField.Contribution">
+      <action
+        id="com.ember.workbench.gui.action.PacketViewAction.HEX_DEC_TOGGLE"
+        label="Hex/decimal toggle"
+        style="push"
+        menubarPath="additions"
+        enablesFor="1"
+        class="com.ember.workbench.gui.action.PacketViewAction">
+      </action>
+      <action
+        id="com.ember.workbench.gui.action.PacketViewAction.FILTER_APPLY"
+        label="Replace filter"
+        style="push"
+        menubarPath="additions"
+        enablesFor="1"
+        class="com.ember.workbench.gui.action.PacketViewAction">
+      </action>
+      <action
+        id="com.ember.workbench.gui.action.PacketViewAction.FILTER_INSERT"
+        label="Add to filter"
+        style="push"
+        menubarPath="additions"
+        enablesFor="1"
+        class="com.ember.workbench.gui.action.PacketViewAction">
+      </action>
+    </objectContribution>
+    
+    <objectContribution
+      adaptable="true"
+      objectClass="com.ember.workbench.capture.event.BookmarkEvent"
+      id="com.ember.workbench.core.UserEvent.Contribution">
+      <action
+        id="com.ember.workbench.gui.action.RemoveEvent"
+        label="Remove"
+        style="push"
+        menubarPath="additions"
+        enablesFor="1"
+        class="com.ember.workbench.gui.action.RemoveEvent">
+      </action>
+      <action
+        id="com.ember.workbench.gui.action.RenameEvent"
+        label="Rename..."
+        style="push"
+        menubarPath="additions"
+        enablesFor="1"
+        class="com.ember.workbench.gui.action.RenameEvent">
+      </action>
+    </objectContribution>
+    <!-- GroupEvent -->
+    <objectContribution
+      adaptable="false"
+      objectClass="com.ember.workbench.group.GroupEvent"
+      id="com.ember.workbench.GroupEvent.Contribution">
+      <action
+        id="com.ember.workbench.gui.action.EventAction.FILTER_BY_PACKETCOUNT"
+        label="Show only Packet Count"
+        style="push"
+        menubarPath="filters"
+        enablesFor="1"
+        class="com.ember.workbench.gui.action.EventAction">
+      </action>
+      <action
+        id="com.ember.workbench.gui.action.EventAction.FILTER_BY_MACRETRIES"
+        label="Show only Mac Retries"
+        style="push"
+        menubarPath="filters"
+        enablesFor="1"
+        class="com.ember.workbench.gui.action.EventAction">
+      </action>
+      <action
+        id="com.ember.workbench.gui.action.EventAction.FILTER_BY_ENDTOENDRETRIES"
+        label="Show only End to End Retries"
+        style="push"
+        menubarPath="filters"
+        enablesFor="1"
+        class="com.ember.workbench.gui.action.EventAction">
+      </action>
+    </objectContribution>
+    <!-- IEvent -->
+    <objectContribution
+      adaptable="false"
+      objectClass="com.ember.workbench.capture.event.IEvent"
+      id="com.ember.workbench.core.IEvent.Contribution">
+      <action
+        id="com.ember.workbench.gui.action.EventAction.HIDE_TYPE"
+        label="Hide type"
+        style="push"
+        menubarPath="filters"
+        enablesFor="1"
+        class="com.ember.workbench.gui.action.EventAction">
+      </action>
+      <action
+        id="com.ember.workbench.gui.action.EventAction.SHOW_ONLY_TYPE"
+        label="Show only type"
+        style="push"
+        menubarPath="filters"
+        enablesFor="1"
+        class="com.ember.workbench.gui.action.EventAction">
+      </action>
+      <action
+        id="com.ember.workbench.gui.action.ExtractEventToLog.EXTRACT"
+        label="Extract to..."
+        style="push"
+        menubarPath="extractions"
+        enablesFor="+"
+        class="com.ember.workbench.gui.action.ExtractEventToLog">
+      </action>
+      <action
+        id="com.ember.workbench.gui.action.ExtractEventToLog.APPEND"
+        label="Append to file"
+        style="push"
+        menubarPath="extractions"
+        enablesFor="+"
+        class="com.ember.workbench.gui.action.ExtractEventToLog">
+      </action>
+      <action
+        id="com.ember.workbench.gui.action.Bookmark"
+        label="Add bookmark..."
+        style="push"
+        menubarPath="additions"
+        enablesFor="1"
+        class="com.ember.workbench.gui.action.Bookmark">
+      </action>
+      <action
+        id="com.ember.workbench.gui.action.EventAction.FILTER_BY_STATUS"
+        label="Show only Status"
+        style="push"
+        menubarPath="filters"
+        enablesFor="1"
+        class="com.ember.workbench.gui.action.EventAction">
+      </action>
+      <action
+        id="com.ember.workbench.gui.action.EventAction.FILTER_BY_SOURCE"
+        label="Show only source"
+        style="push"
+        menubarPath="filters"
+        enablesFor="1"
+        class="com.ember.workbench.gui.action.EventAction">
+      </action>
+      <action
+        id="com.ember.workbench.gui.action.EventAction.FILTER_BY_DESTINATION"
+        label="Show only destination"
+        style="push"
+        menubarPath="filters"
+        enablesFor="1"
+        class="com.ember.workbench.gui.action.EventAction">
+      </action>
+      <action
+        id="com.ember.workbench.gui.action.EventAction.FILTER_BY_SUMMARY"
+        label="Show only summary"
+        style="push"
+        menubarPath="filters"
+        enablesFor="1"
+        class="com.ember.workbench.gui.action.EventAction">
+      </action>
+      <action
+            class="com.ember.workbench.gui.action.AnchorTime"
+            enablesFor="1"
+            id="com.ember.workbench.gui.action.AnchorTime.ANCHOR"
+            label="Set zero-time anchor to this event"
+            menubarPath="anchor"
+            style="push"/>
+      <action
+            class="com.ember.workbench.gui.action.AnchorTime"
+            enablesFor="+"
+            id="com.ember.workbench.gui.action.AnchorTime.UNANCHOR"
+            label="Unset zero-time"
+            menubarPath="anchor"
+            style="push"/>
+    </objectContribution>
+    
+    <!-- IFilters -->
+    <objectContribution
+      adaptable="true"
+      objectClass="com.ember.workbench.filter.FilterModelEntry"
+      id="com.ember.workbench.filter.FilterModelEntry.Contribution">
+    </objectContribution>
+        
+    <!-- Drawn node entries: popups for the node on the map -->
+    <objectContribution
+          adaptable="true"
+          objectClass="com.ember.workbench.gui.view.IDrawnNode"
+          id="com.ember.workbench.gui.view.IDrawnNode.Contribution">
+      <action
+            class="com.ember.workbench.gui.action.NodeAction"
+            enablesFor="1"
+            id="com.ember.workbench.gui.action.NodeAction.APPLICATION"
+            label="Application..."
+            menubarPath="object_actions"
+            state="false"
+            style="push">
+      </action>
+      <action
+            class="com.ember.workbench.gui.action.NodeAction"
+            enablesFor="1"
+            id="com.ember.workbench.gui.action.NodeAction.NODECONTROL"
+            label="Show node control"
+            menubarPath="object_actions"
+            state="false"
+            style="toggle">
+      </action>
+      <action
+            class="com.ember.workbench.gui.action.NodeAction"
+            enablesFor="1"
+            id="com.ember.workbench.gui.action.NodeAction.CONNECTIVITY"
+            label="Show connectivity"
+            menubarPath="object_actions"
+            state="false"
+            style="toggle">
+      </action>
+      <action
+        id="com.ember.workbench.gui.action.NodeAction.SHOW_ONLY_PAN"
+        label="Show only this PAN"
+        style="push"
+        menubarPath="object_actions"
+        enablesFor="1"
+        class="com.ember.workbench.gui.action.NodeAction">
+      </action>
+      <action
+        id="com.ember.workbench.gui.view.IDrawnNode.ICON_LOAD"
+        label="More Icons..."
+        style="push"
+        menubarPath="object_actions"
+        enablesFor="1"
+        class="com.ember.workbench.gui.action.NodeAction">
+      </action>
+      <action
+        id="com.ember.workbench.gui.view.IDrawnNode.ICON"
+        label="Icon..."
+        style="pulldown"
+        menubarPath="object_actions"
+        enablesFor="1"
+        class="com.ember.workbench.gui.action.DrawnNodeIconPick">
+      </action>
+      <action
+        id="com.ember.workbench.gui.action.NodeAction.LABEL"
+        label="Label..."
+        style="push"
+        menubarPath="object_actions"
+        enablesFor="1"
+        class="com.ember.workbench.gui.action.NodeAction">
+      </action>
+    </objectContribution>
+       
+    <!-- Inode entries: popups for the node on the map AND node state view -->
+    <objectContribution
+          adaptable="true"
+          objectClass="com.ember.workbench.capture.node.INode"
+          id="com.ember.workbench.core.INode.Contribution">
+      <action
+        id="com.ember.workbench.gui.action.NodeAction.MULTINETWORK"
+        label="Multinetwork node"
+        style="toggle"
+        state="false"
+        menubarPath="object_actions"
+        enablesFor="1"
+        class="com.ember.workbench.gui.action.NodeAction">
+      </action>
+      <action
+        id="com.ember.workbench.gui.action.NodeAction.EUI64"
+        label="Assign EUI64..."
+        style="push"
+        menubarPath="object_actions"
+        enablesFor="1"
+        class="com.ember.workbench.gui.action.NodeAction">
+      </action>
+    </objectContribution>
+    <objectContribution
+          adaptable="false"
+          id="com.ember.workbench.gui.CapableGroup"
+          objectClass="com.ember.workbench.gui.CapableGroup">
+       <action
+             class="com.ember.workbench.gui.action.GroupAction"
+             enablesFor="1"
+             id="com.ember.workbench.gui.action.GroupAction.ADD"
+             label="Add group"
+             menubarPath="additions"
+             state="true"
+             style="push"/>
+       <action
+             class="com.ember.workbench.gui.action.GroupAction"
+             enablesFor="1"
+             id="com.ember.workbench.gui.action.GroupAction.DELETE"
+             label="Delete group"
+             menubarPath="additions"
+             state="true"
+             style="push"/>
+       <action
+             class="com.ember.workbench.gui.action.GroupAction"
+             enablesFor="1"
+             id="com.ember.workbench.gui.action.GroupAction.RENAME"
+             label="Rename group"
+             menubarPath="additions"
+             state="true"
+             style="push"/>
+    </objectContribution>
+    <objectContribution
+          adaptable="false"
+          id="com.ember.workbench.map.MapWidget"
+          objectClass="com.ember.workbench.map.MapWidget">
+       <action
+             class="com.ember.workbench.gui.action.MapBackgroundImage"
+             id="com.ember.workbench.gui.action.MapBackgroundImage.CLEAR"
+             label="Clear Background Image"
+             menubarPath="additions"
+             style="push">
+       </action>
+       <action
+             class="com.ember.workbench.gui.action.MapBackgroundImage"
+             id="com.ember.workbench.gui.action.MapBackgroundImage.LOAD"
+             label="Load Background Image..."
+             menubarPath="additions"
+             style="push">
+       </action>
+       <action
+             class="com.ember.workbench.gui.action.LoadLocationAction"
+             id="com.ember.workbench.gui.action.LoadLocationAction.CLEAR"
+             label="Clear locations"
+             menubarPath="additions"
+             style="push"/>
+       <action
+             class="com.ember.workbench.gui.action.LoadLocationAction"
+             id="com.ember.workbench.gui.action.LoadLocationAction.LOAD"
+             label="Load locations..."
+             menubarPath="additions"
+             style="push"/>
+       <action
+             class="com.ember.workbench.gui.action.LoadLocationAction"
+             id="com.ember.workbench.gui.action.LoadLocationAction.SAVE"
+             label="Save locations..."
+             menubarPath="additions"
+             style="push"/>
+       <action
+             class="com.ember.workbench.gui.action.ShowHiddenNodesAction"
+             id="com.ember.workbench.gui.action.ShowHiddenNodesAction"
+             label="Clear PAN filter"
+             menubarPath="additions"
+             style="push"/>
+       <action
+             class="com.ember.workbench.gui.action.PanFilterAction"
+             id="com.ember.workbench.gui.action.PanFilterAction"
+             label="Set PAN filter..."
+             menubarPath="additions"
+             style="push"/>
+       <action
+             id="com.ember.workbench.gui.action.MapEui64FormatAction"
+             label="Display EUI64 with manufacturer"
+             style="toggle"
+             state="false"
+             menubarPath="additions"
+             enablesFor="1"
+             class="com.ember.workbench.gui.action.MapEui64FormatAction">
+      </action>
+       <action
+             class="com.ember.workbench.gui.action.OrganizeMapAction"
+             id="com.ember.workbench.gui.action.OrganizeMapAction"
+             label="Organize Map"
+             menubarPath="additions"
+             style="pulldown"/>
+    </objectContribution>
+    <objectContribution
+          adaptable="false"
+          id="com.ember.workbench.adapter.IAdapter.object"
+          objectClass="com.ember.workbench.adapter.IAdapterProvider">
+       <action
+             class="com.ember.workbench.gui.action.AdapterPropertiesAction"
+             enablesFor="1"
+             id="com.ember.workbench.gui.action.AdapterPropertiesAction"
+             label="Adapter properties..."
+             menubarPath="additions"
+             style="push">
+       </action>
+    </objectContribution>
+    <objectContribution
+          adaptable="false"
+          id="com.ember.workbench.core.BookmarkStorage"
+          objectClass="com.ember.workbench.storage.BookmarkStorage">
+      <action
+        id="com.ember.workbench.gui.action.Bookmark"
+        label="Add bookmark..."
+        style="push"
+        menubarPath="additions"
+        enablesFor="1"
+        class="com.ember.workbench.gui.action.Bookmark">
+      </action>
+    </objectContribution>
+  </extension>
+  
+  <!-- Editors -->
+  <extension point="org.eclipse.ui.editors">
+    <editor
+          class="com.ember.workbench.gui.editor.StreamEditor"
+          contributorClass="com.ember.workbench.gui.editor.StreamEditorContributor"
+          icon="icons/ember.png"
+          id="com.ember.workbench.gui.editor.StreamEditor"
+          name="Stream">
+    </editor>
+    <editor
+          class="com.ember.workbench.gui.editor.LargeFileEditor"
+          contributorClass="com.ember.workbench.gui.editor.LargeFileEditorContributor"
+          icon="icons/ember_large.png"
+          id="com.ember.workbench.gui.editor.LargeFileEditor"
+          name="Large File">
+    </editor>
+  </extension>
+  
+  <!-- Element factories -->
+  <extension point="org.eclipse.ui.elementFactories">
+    <factory 
+      id="com.ember.workbench.gui.editor.StreamEditorFactory"
+      class="com.ember.workbench.gui.editor.StreamEditorFactory">
+    </factory>
+  </extension>
+  
+  <!-- Views -->
+  <extension point="org.eclipse.ui.views">
+    <category id="com.ember.workbench.gui.view" name="%view.category.name"/>
+      <view
+       name="%view.progress.name"
+       icon="icons/progress.gif"
+       category="com.ember.workbench.gui.view"
+       class="org.eclipse.ui.ExtensionFactory:progressView"
+       id="org.eclipse.ui.views.ProgressView"/>
+   <view id="com.ember.workbench.gui.view.AdapterView" 
+      name="%view.backchannel.name" 
+      class="com.ember.workbench.gui.view.AdapterView" 
+      category="com.ember.workbench.gui.view"
+      icon="icons/backchannel.gif"
+      allowMultiple="true" />    
+    <view id="com.ember.workbench.gui.view.PacketView" 
+      name="%view.packet.name" 
+      class="com.ember.workbench.gui.view.PacketView" 
+      category="com.ember.workbench.gui.view"
+      icon="icons/packetview.gif"
+      allowMultiple="true" />
+    <view id="com.ember.workbench.gui.view.BytesView" 
+      name="%view.bytes.name" 
+      class="com.ember.workbench.gui.view.BytesView" 
+      category="com.ember.workbench.gui.view"
+      icon="icons/binary.png"
+      allowMultiple="true" />
+    <view id="com.ember.workbench.gui.view.FilterManager" 
+      name="%view.filtermanager.name" 
+      class="com.ember.workbench.gui.view.FilterManager" 
+      category="com.ember.workbench.gui.view"
+      icon="icons/filterman.gif"
+      allowMultiple="true" />
+    <view
+          allowMultiple="true"
+          category="com.ember.workbench.gui.view"
+          class="com.ember.workbench.gui.view.RadioInfoView"
+          icon="icons/nodelqi.gif"
+          id="com.ember.workbench.gui.view.RadioInfoView"
+          name="Radio Info"/>
+    <view
+          allowMultiple="true"
+          category="com.ember.workbench.gui.view"
+          class="com.ember.workbench.gui.view.DiffView"
+          icon="icons/diff.gif"
+          id="com.ember.workbench.gui.view.DiffView"
+          name="Event Difference"/>
+    <view
+          allowMultiple="false"
+          category="com.ember.workbench.gui.view"
+          class="com.ember.workbench.gui.view.LargeFileView"
+          icon="icons/ember_large.png"
+          id="com.ember.workbench.gui.view.LargeFileView"
+          name="Search">
+    </view>
+    <view
+          allowMultiple="true"
+          category="com.ember.workbench.gui.view"
+          class="com.ember.workbench.gui.view.ConnectivityView"
+          icon="icons/connectivity.gif"
+          id="com.ember.workbench.gui.view.ConnectivityView"
+          name="Connectivity"
+          restorable="true">
+    </view>
+    <view
+          allowMultiple="false"
+          category="com.ember.workbench.gui.view"
+          class="com.ember.workbench.gui.view.LatencyView"
+          icon="icons/stopwatch.png"
+          id="com.ember.workbench.gui.view.LatencyView"
+          name="Latency">
+    </view>
+  </extension>
+  <extension
+        point="com.silabs.foundation.adapter.capabilitySetup">
+     <parameter
+           capabilityId="upload_app_soc"
+           class="com.ember.workbench.gui.adapter.BootloadCapabilityInput"/>
+     <parameter
+           capabilityId="upload_app_ncp"
+           class="com.ember.workbench.gui.adapter.BootloadCapabilityInput"/>
+     <parameter
+           capabilityId="upload_app_host"
+           class="com.ember.workbench.gui.adapter.BootloadCapabilityInput"/>
+     <parameter
+           capabilityId="upload_firmware"
+           class="com.ember.workbench.gui.adapter.FirmwareCapabilityInput"/>
+     <parameter
+           capabilityId="capture_start"
+           class="com.ember.workbench.gui.adapter.StartCaptureCapabilityInput"/>
+     <parameter
+           capabilityId="capture_start_opt"
+           class="com.ember.workbench.gui.adapter.StartCaptureOptCapabilityInput"/>
+  </extension>
+  <extension
+        point="org.eclipse.ui.perspectiveExtensions">
+     <perspectiveExtension targetID="com.ember.workbench.gui.DefaultPerspective">
+        <viewShortcut id="com.ember.workbench.gui.view.AdapterView"/>
+        <viewShortcut id="com.ember.workbench.gui.view.FilterManager"/>
+        <viewShortcut
+              id="com.ember.workbench.gui.view.ConnectivityView">
+        </viewShortcut>
+        <viewShortcut id="com.ember.workbench.gui.view.RadioInfoView"/>
+        <viewShortcut id="com.ember.workbench.gui.view.DiffView"/>
+        <viewShortcut id="org.eclipse.ui.views.ProgressView"/>
+        <view
+              id="com.ember.workbench.gui.view.RadioInfoView"
+              relationship="bottom"
+              relative="com.ember.workbench.gui.view.AdapterView"
+              visible="false"/>
+        <view
+              id="com.ember.workbench.gui.view.DiffView"
+              relationship="stack"
+              relative="com.ember.workbench.gui.view.RadioInfoView"
+              visible="false"/>
+        <view
+              id="org.eclipse.ui.views.ProgressView"
+              relationship="stack"
+              relative="com.ember.workbench.gui.view.RadioInfoView"
+              visible="false"/>
+        <viewShortcut
+              id="org.eclipse.pde.runtime.LogView">
+        </viewShortcut>
+        <view
+              id="com.ember.workbench.gui.view.LargeFileView"
+              relationship="stack"
+              relative="com.ember.workbench.gui.view.AdapterView"
+              visible="false">
+        </view>
+        <view
+              id="com.ember.workbench.gui.view.PacketView"
+              relationship="stack"
+              relative="com.ember.workbench.gui.view.RadioInfoView"
+              visible="false">
+        </view>
+        <view
+              id="com.ember.workbench.gui.view.BytesView"
+              relationship="stack"
+              relative="com.ember.workbench.gui.view.RadioInfoView"
+              visible="false">
+        </view>
+        <view
+              id="com.ember.workbench.gui.view.ConnectivityView"
+              minimized="false"
+              relationship="stack"
+              relative="com.ember.workbench.gui.view.RadioInfoView"
+              visible="false">
+        </view>
+     </perspectiveExtension>
+  </extension>
+  <extension point="com.ember.core.packetTemplate">
+     <packetTemplate
+           bytes="19 41 88 6A FF 01 FF FF 00 00 04 00 FF FF 00 00 01 01 08 F0 80 0E C0 F0"
+           description="Ember Neighbor Exchange Packet"
+           name="Neighbor Exchange"/>
+     <packetTemplate
+           bytes="54 61 88 5F FF 01 00 00 07 EE 04 00 00 00 07 EE 0A 3E 00 01 0A 0F C0 01 E1 AE 00 37 B0 05 00 00 6F 0D 00 30 B0 05 00 00 6F 0D 00 13 F2 13 F2 13 F2 13 F2 13 F2 13 F2 13 F2 13 F2 13 F2 13 F2 13 F2 13 F2 13 F2 13 F2 13 F2 13 F2 13 F2 13 F2 13 F2 13 F2"
+           description="Transport Datagram"
+           name="Transport Datagram"/>
+     <packetTemplate
+           bytes="05 02 00 5F"
+           description="Simple 15.4 Ack"
+           name="Ack"/>
+  </extension>
+  <extension
+        point="com.ember.core.scriptInterface">
+    <interface class="com.ember.workbench.script.DiscoveryAPI"/>
+    <interface class="com.ember.workbench.script.AdaptersAPI"/>
+    <interface class="com.ember.workbench.script.ScriptLoggerAPI"/>
+    <interface class="com.ember.workbench.script.EventsAPI"/>
+	<interface class="com.ember.workbench.script.HelpAPI"/>
+ <interface
+       class="com.ember.workbench.script.DeviceManagerAPI">
+ </interface>
+  </extension>
+  <extension
+        point="com.silabs.foundation.adapter.boardType">
+     <boardType id="0221" name="0221"/>
+     <boardType id="0222" name="0222"/>
+     <boardType id="0430" name="0430"/>
+     <boardType id="0455" name="0455"/>
+     <boardType id="0470" name="0470"/>
+     <boardType id="0473" name="0473"/>
+     <boardType id="0670" name="0670"/>
+     <boardType id="0680" name="0680"/>
+     <boardType id="0859" name="0859"/>
+  </extension>
+  <extension
+        point="com.ember.core.exporter">
+     <exporter
+           class="com.ember.workbench.export.SimpleLogExporter"
+           defaultFileName="{file}.log"
+           name="Simple text event log"/>
+     <exporter
+           class="com.ember.workbench.export.FilteredLogExporter"
+           defaultFileName="{file}-filtered.log"
+           name="Simple text event log (Filtered)"/>
+     <exporter
+           class="com.ember.workbench.export.TransactionExporter"
+           defaultFileName="{file}-transactions.csv"
+           name="Transactions comma-separated file"/>
+     <exporter
+           class="com.ember.workbench.export.EventExporter"
+           defaultFileName="{file}-events.csv"
+           name="Events comma-separated file"/>
+     <exporter
+           class="com.ember.workbench.export.DcfExporter"
+           defaultFileName="{file}.dcf"
+           fileNotRequired="false"
+           name="DCF exporter (format 4)">
+     </exporter>
+  </extension>
+  <extension
+        point="com.silabs.foundation.core_ui.fileOpener">
+     <opener class="com.ember.workbench.open.ISDFileOpener"/>
+  </extension>
+  <extension
+        point="com.ember.core.importer">
+     <importer
+           class="com.ember.workbench.export.ISDImporter"
+           id="isd"
+           name="ISD file"/>
+     <importer
+           class="com.ember.workbench.export.LogImporter"
+           id="log"
+           name="Plain text file"/>
+  </extension>
+  <extension
+        point="com.ember.core.grouper">
+     <grouper
+           class="com.ember.workbench.fragment.FragmentGrouper"
+           description="Fragment Grouper"
+           enable="true"
+           id="group.fragment.assembly">
+      </grouper>
+     <grouper
+           class="com.ember.workbench.group.debug.LatencyGrouper"
+           description="Latency"
+           enable="true"
+           id="group.latency.report">
+     </grouper>
+     
+  </extension>
+  <extension
+        point="com.ember.core.securityProfile">
+        <securityProfile
+          name="ZigBeeAlliance09"
+          key="5A 69 67 42 65 65 41 6C 6C 69 61 6E 63 65 30 39"/>
+        <securityProfile
+          name="Smart Energy Link"
+          key="12 33 33 33 33 33 33 33 33 33 33 33 33 33 33 33"/>
+        <securityProfile
+          name="Smart Energy Network"
+          key="56 77 77 77 77 77 77 77 77 77 77 77 77 77 77 77"/>
+        <securityProfile
+          name="Sensor/Sink Network"
+          key="65 6D 62 65 72 20 45 4D 32 35 30 20 63 68 69 70"/>
+        <securityProfile
+          name="Sensor/Sink Link"
+          key="5A 69 67 62 65 65 20 53 65 63 75 72 69 74 79 21"/>
+        <securityProfile
+          name="Super Parent Link"
+          key="53 75 70 65 72 50 61 72 65 6E 74 4C 69 6E 6B 4B"/>  
+        <securityProfile
+          name="Super Parent Network"
+          key="53 75 70 65 72 50 61 72 65 6E 74 4E 65 74 77 4B"/>
+        <securityProfile
+          name="Standalone Bootloader Link"
+          key="65 6D 62 65 72 20 45 4D 32 35 30 20 6C 69 6E 6B"/>  
+        <securityProfile
+          name="Standalone Bootloader Network"
+          key="65 6D 62 65 72 20 45 4D 32 35 30 20 6E 77 6B 20"/>
+        <securityProfile
+          name="App Bootloader Link"
+          key="65 6D 62 65 72 20 45 4D 32 35 30 20 61 62 6C 4C"/>  
+        <securityProfile
+          name="App Bootloader Network"
+          key="65 6D 62 65 72 20 45 4D 32 35 30 20 61 62 6C 4E"/>
+        <securityProfile
+          name="Default Framework V1 Nwk Key"
+          key="04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04"/>
+        <securityProfile
+          name="Default Framework V1 Lnk Key"
+          key="05 05 05 05 05 05 05 05 05 05 05 05 05 05 05 05"/>
+        <securityProfile
+              key="BF BE BD BC BB BA B9 B8 B7 B6 B5 B4 B3 B2 B1 B0"
+              name="Default IP Test Event Key">
+        </securityProfile>
+  </extension>
+  <extension
+        point="com.ember.core.fileParser">
+     <parser
+           class="com.ember.workbench.log.CompleteParserWriter">
+     </parser>
+     <parser
+           class="com.ember.workbench.log.WorkbenchLogParser">
+     </parser>
+     <parser
+           class="com.ember.workbench.log.DaintreeLogParser">
+     </parser>
+     <parser
+           class="com.ember.workbench.log.DebugLogParser">
+     </parser>
+     <parser
+           class="com.ember.workbench.log.SimulatorLogParser">
+     </parser>
+     <parser
+           class="com.ember.workbench.log.ISATestParser">
+     </parser>
+  </extension>
+  <extension
+        point="com.ember.core.frameDecoder">
+     <frameDecoder
+           decoderClass="com.ember.workbench.decoder.debug.ASHDecoder"
+           id="ash">
+     </frameDecoder>
+     <frameDecoder
+           decoderClass="com.ember.workbench.decoder.debug.AssertDecoder"
+           id="assert">
+     </frameDecoder>
+     <frameDecoder
+           decoderClass="com.ember.workbench.decoder.debug.CoreDumpDecoder"
+           id="coreDump">
+     </frameDecoder>
+     <frameDecoder
+           decoderClass="com.ember.workbench.decoder.debug.DagTraceDecoder"
+           id="dagTrace">
+     </frameDecoder>
+     <frameDecoder
+           decoderClass="com.ember.workbench.decoder.debug.HeapStackDecoder"
+           id="heapStack">
+     </frameDecoder>
+     <frameDecoder
+           decoderClass="com.ember.workbench.decoder.debug.InfoResponseDecoder"
+           id="infoResponse">
+     </frameDecoder>
+     <frameDecoder
+           decoderClass="com.ember.workbench.decoder.debug.PrintfDecoder"
+           id="printf">
+     </frameDecoder>
+     <frameDecoder
+           decoderClass="com.ember.workbench.decoder.debug.ResetDecoder"
+           id="reset">
+     </frameDecoder>
+     <frameDecoder
+           decoderClass="com.ember.workbench.decoder.debug.StatsDecoder"
+           id="stats">
+     </frameDecoder>
+     <frameDecoder
+           decoderClass="com.ember.workbench.decoder.debug.VirtualUARTRxDecoder"
+           id="virtualUartRx">
+     </frameDecoder>
+     <frameDecoder
+           decoderClass="com.ember.workbench.decoder.debug.VirtualUARTTxDecoder"
+           id="virtualUartTx">
+     </frameDecoder>
+     <frameDecoder
+           decoderClass="com.ember.workbench.decoder.debug.ZipVersion"
+           id="zipVersion">
+     </frameDecoder>
+     <frameDecoder
+           decoderClass="com.ember.workbench.decoder.debug.ZnetVersion"
+           id="znetVersion">
+     </frameDecoder>
+     <frameDecoder
+           decoderClass="com.ember.workbench.decoder.debug.LatencyDecoder"
+           id="latency">
+     </frameDecoder>
+     <frameDecoder
+           decoderClass="com.ember.workbench.decoder.debug.AdapterInfoDecoder"
+           id="adapterInfo">
+     </frameDecoder>
+     <frameDecoder
+           decoderClass="com.ember.workbench.decoder.debug.UserCommandDecoder"
+           id="userCommand">
+     </frameDecoder>
+     <frameDecoder
+           decoderClass="com.ember.workbench.decoder.debug.UserResponseDecoder"
+           id="userResponse">
+     </frameDecoder>
+  </extension>
+  <extension
+        point="com.ember.core.fieldNames">
+     <fieldName
+           properties="src/com/ember/workbench/decoder/debug/fieldName.properties">
+     </fieldName>
+  </extension>
+  <extension
+        point="com.ember.core.frameNames">
+     <frameName
+           properties="src/com/ember/workbench/decoder/debug/frameName.properties">
+     </frameName>
+  </extension>
+  <extension
+        point="com.ember.core.report">
+     <report
+           description="Reports latency based on special debug messages."
+           key="latency"
+           reportClass="com.ember.workbench.report.debug.LatencyReport">
+     </report>
+  </extension>
+  <extension
+        point="com.ember.core.stack">
+     <stackVersion
+           decoderCreator="com.ember.workbench.decoder.CustomStackDecoderCreator"
+           description="Custom Stack"
+           major="23"
+           minor="0"
+           name="Custom Stack"
+           type="CUSTOM">
+        <profile
+              deprecated="false"
+              description="Custom Stack"
+              id="0"
+              name="Custom Stack">
+        </profile>
+     </stackVersion>
+     <stackVersion
+           decoderCreator="com.ember.workbench.stack.auto.AutoDecoderCreator"
+           description="Auto-detecting decoder stack for mixed traffic"
+           major="42"
+           minor="0"
+           name="Auto-detecting decoder stack"
+           type="AUTO">
+        <!-- The ID of the profile matters as a bitmask of which StackTypes to use 
+             You can add new profiles with different sets of stack types.
+             This information is saved into the ISD file, hence this arcane
+             mechanism.
+        -->
+        <profile
+              deprecated="false"
+              description="Default Profile: Switches between Zigbee, IP and RF4CE stacks"
+              id="0"
+              name="Default">
+        </profile>
+     </stackVersion>
+  </extension>
+  <extension
+        point="com.ember.core.decryption">
+     <decryption
+           implementation="com.ember.workbench.crypto.Xxtea">
+     </decryption>
+  </extension>
+
+  <extension
+        point="com.ember.core.serialProvider">
+     <serialPortProvider
+           class="com.ember.workbench.serial.SerialioSerialPortProvider">
+     </serialPortProvider>
+  </extension>
+  <extension
+        point="com.silabs.foundation.device_manager_ui.deviceConfigurator">
+     <configurator
+           class="com.ember.workbench.gui.dialog.AdapterConfigurator">
+     </configurator>
+  </extension>
+
+</plugin>

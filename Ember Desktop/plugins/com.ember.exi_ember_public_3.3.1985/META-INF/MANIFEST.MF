@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Ember Exi Library
+Bundle-SymbolicName: com.ember.exi_public
+Bundle-Version: 0.99.1.qualifier
+Bundle-Vendor: Silicon Laboratories, Inc.
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: com.ember.exi,
+ com.ember.exi.grammar,
+ com.ember.exi.grammar.builtin,
+ com.ember.exi.xsd
+Bundle-ClassPath: .
+Require-Bundle: com.silabs.external.xerces;bundle-version="2.11.0"

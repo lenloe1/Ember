@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Ember USB Link for Windows
+Bundle-SymbolicName: com.ember.usb_link_win32
+Bundle-Version: 3.3.1985
+Bundle-Vendor: Silicon Laboratories, Inc.
+Fragment-Host: com.ember.usb_link;bundle-version="1.0.0"
+Eclipse-PlatformFilter: (osgi.os=win32)

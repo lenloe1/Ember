@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.ember.workbench"
+      label="%featureName"
+      version="3.3.1985"
+      provider-name="%providerName"
+      plugin="com.ember.core"
+      image="feature.png">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      (c) Ember, 2007
+   </copyright>
+
+   <license url="%licenseURL">
+      SILICON LABORATORIES 
+SOFTWARE DEVELOPER KIT
+LICENSE AGREEMENT
+
+READ THE FOLLOWING LICENSE AGREEMENT CAREFULLY BEFORE ACCEPTING THESE TERMS AND CONDITIONS. INSTALLING, COPYING OR OTHERWISE USING THE SOFTWARE, INDICATES YOUR AGREEMENT TO BE UNCONDITIONALLY BOUND BY THE TERMS OF THIS LICENSE AGREEMENT. IF YOU DO NOT AGREE WITH THESE TERMS AND CONDITIONS, DECLINE THE LICENSE TERMS, DO NOT USE THE SOFTWARE OR DOCUMENTATION, AND PROMPTLY RETURN THE UNUSED DEVELOPMENT KIT TO SILICON LABORATORIES OR YOUR SUPPLIER, AS APPLICABLE, FOR A FULL REFUND.
+
+The Software and related Documentation of Silicon Laboratories are subject to the following License Agreement.  By downloading, installing, copying or otherwise using the Software, you thereby accept these terms and conditions:
+
+
+1. License Grant. In this software license agreement ("Agreement"), you, the acquirer of the license rights granted by this Agreement, are referred to as "Licensee" or "You." In accordance with and subject to the terms and conditions of this Agreement, Silicon Laboratories ("Licensor") grants Licensee a limited, non-transferable, non-exclusive, perpetual license to use the object code version of the accompanying EmberZNet networking stack software and the source code versions of any accompanying sample application software (collectively, the "Software") and documentation (the "Documentation"). The Software and Documentation and any copies or modifications are referred to as the "Licensed Products." If you purchased an InSighttm Development Kit, under the license granted herein, You may (i) install one copy of the Software and its components all together on a single computer, (ii) use the Licensed Products solely for the purpose of developing applications to be used to program Silicon Labs branded integrated circuit chips purchased from Silicon Laboratories or its authorized distributor ("Silicon Labs Chips"), (iii) use the sample application software in source code format to develop and compile applications for use on a Silicon Labs Chip or for use on a host microprocessor that will interface through EZSP with a Silicon Labs Chip serving as a network coprocessor, and (iv) distribute the Silicon Labs Chips programmed in accordance with (ii) or (iii) above, and for no other purpose. 
+
+2. License Restrictions. The Licensed Products shall only be used as permitted by this Agreement. Any use of the Licensed Products not permitted by this Agreement is expressly prohibited. Without limiting the foregoing restriction, You may not assign, sublicense, encumber, rent, lease, loan, resell for profit or otherwise attempt to transfer or distribute the Software or any portion thereof to others or provide access to others on a service bureau basis or otherwise. Licensor may include features in the Software that restrict unlicensed use. You may not copy or modify the Licensed Products, except that You may make one copy the Software for the sole purpose of backup as long as all copyright and other notices are reproduced and included on the backup copy. You may not reverse compile, disassemble, alter, add to, delete from, or otherwise modify the Licensed Products. You may not publish or transfer the Licensed Products, or any copy thereof, in whole or in part, except as expressly provided for in this Agreement. You will not transmit the Software over any network.  The Software is not designed or licensed for use in hazardous environments, safety critical or life support applications, or where personal injury or bodily harm may result from Software use. You may not use the Software, or any element of the Software, to create derivative works or other works that are similar to the Software. You may not use the information within the Documentation or the Licensed Products or other items supplied to you for the purposes of designing, developing or testing a device or simulator which is, or is intended to be, wholly or partly instruction set compatible with the XAP2b processor. You may not remove any copyright, trademark, patent or other proprietary notices from the Licensed Products or any portion thereof.  No license to use the Software in source code form is granted hereunder.  You may only use the Software in executable form.
+
+3. Proprietary Rights. All rights and title in and to the Licensed Products, including without limitation, patents, copyrights, trademarks and trade secret rights, belong to Licensor or its suppliers, and Licensor or its suppliers hold title to each copy of the Licensed Products, and any portion thereof. You acknowledge that the license granted under this Agreement does not provide You with title to or ownership of the Licensed Products, but only a right of limited use under the terms and conditions of this Agreement. Except for the rights expressly granted herein, no other rights are granted to You with respect to the Licensed Products.
+
+4. Confidential Information. You agree that the Licensed Products contain confidential information, including trade secrets, know-how and other information, that comprise the exclusive property of Licensor or its suppliers. During the period this Agreement is in effect and at all times after its termination, You shall maintain the confidentiality of this information and shall not sell, license, sublicense, publish, display, distribute, disclose or otherwise make available this information to any third party nor use such information except as authorized by this Agreement. 
+
+5. Limited Warranty and Remedies. Licensor does not warrant that the functions contained in the Licensed Products will meet Licensee's specific requirements or that the operation of the Software will be uninterrupted or error free. Licensor does warrant that, for a period of thirty (30) days from the date of delivery of the Software to the Licensee (the "Warranty Period"), the Software will function substantially in accordance with the Documentation when used with Silicon Labs Chips and that the media on which the Software is furnished will be free from defects in material and workmanship, under normal use and service, when correctly installed and maintained. In the event that Licensee notifies Licensor, during the Warranty Period, of a failure of the Software to conform to the limited warranty contained in the previous sentence, Licensor's sole obligation, and Licensee's sole remedy, shall be, at Licensor's sole discretion, Licensor's (i) replacement of the Software, or part thereof with a functionally equivalent software product or part, or (ii) repair of the Software. Without limitation of any term or condition contained in this Agreement, this warranty does not apply to any nonconformance caused by (A) improper or inadequate maintenance or calibration, or (B) software or interfacing equipment, parts or supplies not supplied by Licensor or its authorized distributor.
+
+6. WARRANTY DISCLAIMER.  EXCEPT AS PROVIDED ABOVE IN SECTION 5, THE LICENSED PRODUCTS ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING, WITHOUT LIMITATION, ANY IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NONINFRINGEMENT AND THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE LICENSED PRODUCTS IS WITH LICENSEE. SOME STATES DO NOT ALLOW THE EXCLUSION OF IMPLIED WARRANTIES SO THE ABOVE EXCLUSIONS MAY NOT APPLY TO YOU. THIS WARRANTY GIVES YOU SPECIFIC LEGAL RIGHTS. YOU MAY ALSO HAVE OTHER RIGHTS WHICH VARY FROM STATE TO STATE.
+
+7. LIMITATION OF LIABILITY.   LICENSOR'S SOLE OBLIGATION OR LIABILITY UNDER THIS AGREEMENT IS THE REPAIR OR REPLACEMENT OF THE LICENSED PRODUCTS ACCORDING TO THE LIMITED WARRANTY ABOVE. IN NO EVENT SHALL LICENSOR OR ANY OF ITS AFFILIATES OR SUPPLIERS BE LIABLE FOR CONSEQUENTIAL, SPECIAL, INCIDENTAL OR SIMILAR DAMAGES, SUCH AS (BUT NOT LIMITED TO) LOSS OF BUSINESS REVENUES, PROFITS OR SAVINGS OR LOSS OF DATA RESULTING FROM THE USE OR INABILITY TO USE THE LICENSED PRODUCTS, EVEN IF LICENSOR HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES, OR FOR ANY CLAIM BY ANY THIRD PARTY. THIS INCLUDES, BUT IS NOT LIMITED TO, DAMAGES ARISING FROM THE FAILURE OF THE SILICON LABS CHIP TO TRANSMIT DATA ARISING FROM A FAILURE OF THE LICENSED PRODUCTS TO PERFORM IN SUBSTANTIAL ACCORDANCE WITH THE DOCUMENTATION. IN NO EVENT SHALL THE LIABILITY OF LICENSOR EXCEED THE AMOUNT PAID FOR THE LICENSED PRODUCT BY LICENSEE. YOU ACKNOWLEDGE THAT THE AMOUNT PAID BY YOU FOR THE LICENSED PRODUCT REFLECTS THIS ALLOCATION OF RISK. SOME STATES DO NOT ALLOW THE LIMITATION OR EXCLUSION OF LIABILITY FOR INCIDENTAL OR CONSEQUENTIAL DAMAGES, SO THE ABOVE LIMITATION OR EXCLUSION MAY NOT APPLY TO YOU.
+
+8. Term and Termination. This Agreement shall take effect on the date the Licensed Products are acquired by or delivered to Licensee, and shall remain in effect unless terminated as provided below. If You fail to comply with any obligations under this Agreement, this Agreement will immediately and automatically terminate. You may terminate this Agreement at any time by destroying all copies of the Licensed Products. Upon termination of this Agreement, Licensee shall immediately discontinue the use of the Licensed Products and shall return or provide certification to Licensor of the destruction of all copies of the Licensed Products. All provisions of this Agreement relating to disclaimers of warranties, limitation of liability, remedies or damages, and Licensor's proprietary rights, shall survive any termination.
+
+9. Export Restrictions. You may not export or reexport the Software or any Licensed Product, or any copy thereof, in violation of any applicable laws or regulations. 
+
+10. Miscellaneous. 
+
+(a) This Agreement sets forth the entire agreement and understanding between the parties and neither party shall be bound by any conditions, definitions, warranties, understandings or representations with respect to the subject matter hereof other than as expressly provided herein or as duly set forth on or subsequent to the date hereof in writing and signed by a proper and duly authorized representative of the party to be bound thereby. The failure of any party at any time to require performance of any provision of this Agreement shall in no manner affect the right of such party at a later time to enforce the same. No waiver by any party of any condition or of any breach of any term contained in this Agreement, in any one or more instances, shall be deemed to be or construed as a further or continuing waiver of any such condition or of any breach of any such term or any other term set forth in this Agreement. If any provision of this Agreement is inoperative or unenforceable for any reason, such circumstances shall not have the effect of rendering the provision in question inoperative or unenforceable in any other case or circumstance, or of rendering any other provision or provisions contained in this Agreement invalid, inoperative, or unenforceable to any extent whatsoever. The invalidity of any portion of this Agreement shall not affect the remaining portions of this Agreement.
+
+(b) This Agreement shall be governed by the laws of the Commonwealth of Massachusetts, United States of America, without regard to that state's conflicts of laws rules. The 1980 United Nations Convention on Contracts for the International Sale of Goods shall not apply. In any dispute arising out of this Agreement, the parties each consent to the exclusive personal jurisdiction and venue in the State and Federal courts located within the Commonwealth of Massachusetts, United States of America. 
+
+(c) If Licensee is an agency of the U.S. Government, the following will apply: The Software has been developed entirely at private expense, is regularly used for nongovernmental purposes and has been licensed to the public. The Software is a "commercial item" as that term is defined in 48 C.F.R. 2.101 (Oct. 1995), consisting of "commercial computer software" and "commercial computer software documentation" as those terms are used in 48 C.F.R. 12.212 (Sept. 1995) or as "commercial computer software" as that term is defined in 48 C.F.R. 252.227-7014 (June 1995) or any equivalent agency regulation or contract clause, whichever is applicable. Consistent with 48 C.F.R. 12.212 and 48 C.F.R. 227.7202-1 through 227.7202-4 (June 1995), all U.S. Government agencies acquire only those rights to the Software as are expressly set forth herein. 
+
+(d) Any questions regarding this Agreement or other notice or other communication to Licensor shall be sent to silicon Laboratories Technical Support at +1 (617) 951-0200 or via an online ticket at http://www.silabs.com/Zigbee-support. 
+
+
+SOFTWARE DEVELOPER KIT 
+DEVELOPER SUPPORT AGREEMENT
+
+1. Technical Support.  Silicon Laboratories provides technical support to EmberZNet application developers through training, through a web based support portal, or by phone, subject to the terms of this Developer Support Agreement. To access technical support, including software and documentation updates, sign up for support by e-mail at portal.logins@silabs.com and log in to the Silicon Laboratories Support portal at http://www.silabs.com/Zigbee-support.
+
+2. Term of Developer Support.  Your purchase of Developer Support from Silicon Laboratories includes the services described below for a period of 30 days after such purchase (such initial term and any renewal or extensions are referred to collectively as the "Developer Support Term"). A subscription for the Developer Support for each Developer Kit purchased is mandatory. Thereafter, Silicon Laboratories and You may agree to renew such Developer Support for additional blocks of time per the terms at Silicon Laboratories' then current fee. The Developer Support Shall automatically terminate upon expiration of each Developer Support Term, unless otherwise renewed, and upon any termination of the Developer Kit Software License Agreement.
+
+3. Scope of Developer Support.  During the Developer Support Term, Silicon Laboratories will provide technical support in English, via the support portal or phone, to respond to questions from Certified Developer Contacts (as defined below) regarding the use of the Licensed Product included in the Developer Kit. Phone and portal support is provided Monday through Friday, excluding major US holidays, from 9 am to 5 pm Eastern Time. Technical support contact information is listed below.
+
+Phone: +1 (617) 951-0200
+Web: http://www.silabs.com/Zigbee-support
+
+ Telephone and portal support will cover general questions about using the Licensed Product to create applications, EmberZNet functionality, the documentation, integration of Silicon Labs hardware and applications with Your hardware and platforms, run-time problems, and troubleshooting the integration of applications with Supported Host Processor Platforms (as defined at www.silabs.com).
+ Silicon Laboratories will use reasonable efforts to respond to support requests within two (2) business days, during its normal business hours. Silicon Laboratories shall only be required to respond to Certified Developer Contacts and shall not be required to respond to requests from other persons. Support regarding how to design an application with a specific functionality or assistance debugging actual applications is not part of Developer Support, but may be provided by Silicon Laboratories to You pursuant to a Professional Services Agreement, as described in Section 7.2 below.
+
+4. Certified Developer Contacts.  Silicon Laboratories shall periodically offer a multi-day training course on the Developer Kit in the greater Boston, Massachusetts area, and as required in other geographic regions. During the Developer Support Term, You may have your employees attend such training courses by purchasing a Training Seat for each of your sponsored attendees. Any attendee who completes the training course shall be deemed a "Certified Developer Contact." Attendees are required to have the minimum computer programming, technical experience and training then reasonably required by Silicon Laboratories. By special arrangement, training courses may be held at Your designated site for an additional fee.
+
+5. Updates.  During the Developer Support Term, Silicon Laboratories shall provide to You any updates that Silicon Laboratories, in its sole discretion, elects to make generally available at no additional charge to subscribers of Developer Support. Silicon Laboratories shall provide You with instructions for installation of updates, and You shall be responsible for installing the updates.
+
+6. Training Seats.   You may elect to purchase additional Training Seats at any time at Silicon Laboratories' then current purchase price.
+
+7. Additional Support.  Silicon Laboratories provides the following two options if You require additional support outside of the scope of this Agreement.
+
+7.1 Additional Hourly Support. You may purchase additional phone and email support for Certified Developer Contacts in blocks of 40 hours each. Each block of 40 hours must be used within 1 year from the date of purchase. Silicon Laboratories will provide pricing for such support upon request.
+
+7.2 Professional Services. Dedicated support and assistance with project development, design and application debugging may be provided pursuant to a written Professional Services Agreement. The Professional Services Agreement will set forth the scope of services to be provided, project milestones, timelines, pricing and any other applicable terms. Each party must sign the Professional Services Agreement prior to Silicon Laboratories' provision of services.
+
+8. General
+
+8.1 Warranty Disclaimer. SILICON LABORATORIES MAKES NO REPRESENTATION OR WARRANTY, EXPRESS OR IMPLIED, WITH RESPECT TO THE DEVELOPER SUPPORT, AND DOES NOT GUARANTEE THAT ANY SOFTWARE PROVIDED WITH THE DEVELOPER KIT IS ERROR FREE OR THAT ANY ERRORS WILL BE CORRECTED.
+
+8.2 Limitation of Liability. SILICON LABORATORIES' LIABILITY FOR ANY CLAIMS ARISING OUT OF DEVELOPER SUPPORT SHALL NOT EXCEED THE DEVELOPER SUPPORT FEE. IN NO EVENT SHALL SILICON LABORATORIES BE LIABLE FOR INDIRECT, CONSEQUENTIAL, SPECIAL, INCIDENTAL OR PUNITIVE DAMAGES ARISING OUT OF THE DEVELOPER SUPPORT, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+9. Governing Law. This Agreement will be governed by the laws of the Commonwealth of Massachusetts, without regard for its conflicts of laws provisions.
+
+
+   </license>
+
+   <url>
+      <update label="%updateSiteName" url="http://insight/update/"/>
+   </url>
+
+   <includes
+         id="com.ember.update"
+         version="0.0.0"/>
+
+   <requires>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.swt"/>
+   </requires>
+
+   <plugin
+         id="com.ember.demofile"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ember.ethernet_adapter"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ember.payloaddecoders"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ember.rcp"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ember.shell"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="com.ember.testrunner"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ember.usb_adapter"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ember.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="com.ember.block_ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="com.ember.binary_image"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ember.chart"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="com.ember.chip2420"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ember.chip250"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ember.chip350"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ember.chip_silabs"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ember.chip260"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ember.cockpit"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ember.stack_2_5"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ember.stack_3_0"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ember.stack_4_0"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ember.ip"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ember.zigbee"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ember.fifteenfour"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ember.wireshark"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ember.zcl"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ember.toolstick"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ember.toolstick_load_win32"
+         os="win32"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"/>
+
+   <plugin
+         id="com.ember.toolstick_win32"
+         os="win32"
+         arch="x86"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"/>
+
+   <plugin
+         id="com.ember.toolstick_win32_64"
+         os="win32"
+         arch="x86_64"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"/>
+
+   <plugin
+         id="com.ember.chip_other"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="com.silabs.foundation.device_manager"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.silabs.foundation.device_manager_ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.silabs.foundation.adapter"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.silabs.foundation.closet"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.silabs.foundation.core_capture"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.silabs.foundation.core_rcp"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.silabs.foundation.core_ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.silabs.foundation.core_util"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.silabs.foundation.architecture"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ember.aem"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

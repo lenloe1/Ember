@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: EM DLL libraries, Win 64 version
+Bundle-SymbolicName: com.ember.emdll_win_64
+Bundle-Version: 3.3.1985
+Bundle-Vendor: Silicon Laboratories, Inc.
+Fragment-Host: com.ember.emdll;bundle-version="1.0.0"
+Eclipse-PlatformFilter: (& (osgi.ws=win32) (osgi.os=win32) (osgi.arch=x86_64))

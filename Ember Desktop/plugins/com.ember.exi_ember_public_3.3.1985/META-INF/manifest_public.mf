@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Main-Class: com.ember.exi.example.Main
+Created-By: Ember Corporation
+Class-Path: lib/resolver.jar lib/serializer.jar lib/xercesImpl.jar
+

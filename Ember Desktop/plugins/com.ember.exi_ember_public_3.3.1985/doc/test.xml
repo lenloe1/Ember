@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<!-- This XML files is a simple example xml file that can be used with SE2.0 schema version 12 -->
+<DemandResponseProgram href="href link" signatureRequired="1" replyTo="reply to link">
+  <description>description</description>
+</DemandResponseProgram>

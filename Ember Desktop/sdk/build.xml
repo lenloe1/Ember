@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright 2007 by Ember Corporation.  All rights reserved.    -->
+
+<project name="InSightDesktop SDK" default="help">
+  <!-- Initialization -->
+  <target name="init">
+    <property name="sdk.version" value="1.3"/>
+  </target>
+
+  <!-- Help printout -->
+  <target name="help" depends="init">
+    <echo>
+InSight SDK, version ${sdk.version}.
+
+InSight installation is in ${isd.dir}
+Java version is: ${java.version}
+
+Usage: InSight_ant [-options] [target]
+
+Possible targets:
+   - decoder_init:   Creates the initial development directory structure for the decoder plugin
+   - decoder_build:  Compiles and builds a decoder plugin
+   - decoder_deploy: Copies the created plugin jar file to the ISD installation directory.
+   - decoder_undeploy: Removes the created plugin jar file from the ISD installation directory.
+
+Use: InSight_ant -help to see other options
+    </echo>
+  </target>
+
+  <!-- This target creates the initial directory structure of the decoder. -->
+  <target name="decoder_init" depends="init">
+    <property file="decoder.properties"/>
+    <echo>
+Creating directory structure for ${decoder.name} in subdirectory ${decoder.plugin}
+    </echo>
+    <mkdir dir="${decoder.plugin}"/>
+    <mkdir dir="${decoder.plugin}/META-INF"/>
+    <mkdir dir="${decoder.plugin}/src"/>
+    <echo file="${decoder.plugin}/plugin.xml"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+  <extension point="com.ember.core.decoder">
+    <decoder class="${decoder.package}.${decoder.class}"
+             enableByDefault="true"
+             frameDescription="Custom decoder"
+             frameKey="FRAME_CUSTOMPAYLOAD"
+             filterName="${decoder.filtername}"
+             name="${decoder.name}">
+       <option default="test value"
+               key="testOption"
+               name="Test option for custom decoder"/>
+     </decoder>
+  </extension>
+</plugin>
+]]></echo>
+    <echo file="${decoder.plugin}/META-INF/MANIFEST.MF"><![CDATA[Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ${decoder.name}
+Bundle-SymbolicName: ${decoder.plugin}; singleton:=true
+Bundle-Version: ${decoder.version}
+Bundle-Vendor: ${decoder.vendor}
+Require-Bundle: com.ember.core
+]]></echo>
+    <echo file="${decoder.plugin}/src/${decoder.class}.java"><![CDATA[
+// Sample code, provided by Ember Corporation
+package ${decoder.package}; 
+
+import java.text.ParseException;
+
+import com.ember.workbench.core.*;
+import com.ember.workbench.decoder.*;
+import com.ember.workbench.decoder.payload.*;
+import com.ember.workbench.field.*;
+
+import java.util.*;
+import java.text.*;
+
+public class ${decoder.class} implements ICustomDecoder {
+
+  /** 
+   * Returns true if the passed event is for consumption of this decoder
+   */
+  public boolean accept(IEvent event, DecodedPacket packet) {
+    return true;
+  }
+
+  /**
+   * Decodes the given frame and returns a structure containing the
+   * fields, offsets, and general frame information.  The frame begins
+   * at the given offset. It also puts event in here, which 
+   * is the event that already contains the decoded fields from
+   * the basic decoders. That is it's difference from the basic
+   * IDecoder. endIndex is the index within the payload byte array,
+   * where payload ends. This is needed if you are decoding items that
+   * go to the end of payload, such as strings and such.
+   */
+  public void decode(IEvent event, DecodedFrame frame, DecodedPacket packet) throws DecoderException {
+  }
+
+  /**
+   * Decoders have custom options. This method sets them.
+   * This method will be set at the beginning, right after decoder is
+   * instantiated, as well as every time when user changes the option
+   * in the preference page. The meaning of the options is entirelly arbitrary and
+   * the valid keys are lister in plugin.xml. User can set these options
+   * from the decoder preference page. If you don't want to use options, simply
+   * don't list any in the plugin.xml.
+   */
+  public void setDecoderOption(String key, String value) throws ParseException {
+  }
+
+  /**
+   * If a certain option is limited, then this method should return a map
+   * between the values and the human-readable thingies, and the UI will
+   * display a drop-down instead of a text field.
+   * 
+   *
+   * @param 
+   * @returns Map<String,String>
+   */
+  public Map<String, String> getDecoderOptionConstraints(String key) {
+    return null;
+  }
+}
+]]></echo>
+  </target>
+  
+  <!-- Target that compiles a decoder plugin and creates a jar file out of it -->
+  <target name="decoder_build" depends="init">
+    <property file="decoder.properties"/>
+    <echo>
+Building decoder ${decoder.name} to file ${decoder.plugin}.jar
+    </echo>
+    <javac srcdir="${decoder.plugin}/src/"
+           destdir="${decoder.plugin}">
+      <classpath>
+        <pathelement location="${isd.dir}/plugins/com.ember.core_3.3.1985/"/>
+      </classpath>
+    </javac>
+    <jar destfile="${decoder.plugin}_${decoder.version}.jar"
+         basedir="${decoder.plugin}" 
+         excludes="src/**" 
+         manifest="${decoder.plugin}/META-INF/MANIFEST.MF"/>
+  </target>
+
+  <target name="decoder_deploy" depends="init">
+    <property file="decoder.properties"/>
+    <echo message="Copying file ${decoder.plugin}_${decoder.version}.jar to ${isd.dir}/plugins"/>
+    <copy file="${decoder.plugin}_${decoder.version}.jar" todir="${isd.dir}/plugins/"/>
+  </target>
+
+  <target name="decoder_undeploy" depends="init">
+    <property file="decoder.properties"/>
+    <echo message="Removing file ${decoder.plugin}_${decoder.version}.jar from ${isd.dir}/plugins"/>
+    <delete file="${isd.dir}/plugins/${decoder.plugin}_${decoder.version}.jar"/>
+  </target>
+
+</project>
+

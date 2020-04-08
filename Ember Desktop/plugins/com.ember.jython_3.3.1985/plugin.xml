@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="com.silabs.foundation.closet.closet">
+      <closetItem
+            destinationType="WORKSPACE"
+            id="jython.lib"
+            name="Python System Library"
+            resource="python/pythonLib.zip">
+      </closetItem>
+   </extension>
+
+</plugin>

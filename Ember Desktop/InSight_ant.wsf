@@ -1,0 +1,63 @@
+<package>
+   <job id="vbs">
+      <script language="VBScript">
+         Set shell = WScript.CreateObject("WScript.Shell")
+         Set env = shell.Environment("SYSTEM")
+         Set fso = CreateObject("Scripting.FileSystemObject")
+         Set args = WScript.Arguments
+
+         output = "Start Script: " & Chr(13) & Chr(10)
+
+         If fso.FileExists(shell.CurrentDirectory & "\build.xml") <> True Then
+           If fso.FileExists(shell.CurrentDirectory & "\sdk\build.xml") = True Then
+             fso.CopyFile shell.CurrentDirectory & "\sdk\build.xml", shell.CurrentDirectory & "\build.xml"
+             output = output & "copied build.xml" & Chr(13) & Chr(10)
+           Else
+             WScript.Echo "Failed to find .\sdk\build.xml. Script failed. Please contact Ember support support@ember.com."
+             WScript.Quit
+           End If
+         End If
+
+         If fso.FileExists(shell.CurrentDirectory & "\decoder.properties") <> True Then
+           If fso.FileExists(shell.CurrentDirectory & "\sdk\decoder.properties") = True Then
+             fso.CopyFile shell.CurrentDirectory & "\sdk\decoder.properties", shell.CurrentDirectory & "\decoder.properties"
+             output = output & "copied decoder.properties" & Chr(13) & Chr(10)
+           Else
+             WScript.Echo "Failed to find .\sdk\decoder.properties. Script failed. Please contact Ember support support@ember.com."
+             WScript.Quit
+           End If
+         End If
+
+         cmdline = Chr(34) & shell.CurrentDirectory & "\InSightDesktop.exe" & Chr(34) & " -vm " & Chr(34) & env("JAVA_HOME") & "\bin\java.exe" & Chr(34) &" -nosplash -application org.eclipse.ant.core.antRunner -Disd.dir=" & Chr(34) & shell.CurrentDirectory & Chr(34) & " "
+
+         If args.Length > 0 Then
+           cmdline = cmdline & args(0)
+         End If
+
+         output     = output & cmdline & Chr(13) & Chr(10)
+         Set exec   = shell.Exec(cmdline)
+
+         Set stdout = exec.StdOut
+         Set stderr = exec.StdErr
+
+         While Not stdout.AtEndOfStream
+           output   = output & stdout.ReadLine & Chr(13) & Chr(10)
+         Wend 
+         
+         If Not stderr.AtEndOfStream Then
+           output = output & Chr(13) & Chr(10)
+           output = output & "Ember Desktop may be having trouble finding your Java JDK installation." & Chr(13) & Chr(10)
+           output = output & "Please be sure that your JAVA_HOME system property is set to the location of your installed Java JDK" & Chr(13) & Chr(10)
+           output = output & Chr(13) & Chr(10)
+         End If
+
+         While Not stderr.AtEndOfStream
+           output   = output & stderr.ReadLine & Chr(13) & Chr(10)
+         Wend 
+         
+
+         WScript.Echo output
+         WScript.Quit
+      </script>
+   </job>
+</package>

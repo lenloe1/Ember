@@ -1,0 +1,176 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="com.ember.core" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appInfo>
+         <meta.schema plugin="com.ember.core" id="binaryimage" name="BinaryImage"/>
+      </appInfo>
+      <documentation>
+         This extension point represents a binary image within ISD.
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <annotation>
+         <appInfo>
+            <meta.element />
+         </appInfo>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="image" minOccurs="1" maxOccurs="unbounded"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="image">
+      <complexType>
+         <attribute name="path" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The path to the main image file.
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="resource"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string" use="required">
+            <annotation>
+               <documentation>
+                  A friendly name for the image.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="imageType" type="string">
+            <annotation>
+               <documentation>
+                  The image type, can be one of four enum values listed 
+                  in IBinaryImage.BinaryImageType, STACKAPP, HOSTAPP, 
+                  BOOTLOADER, FIRMWARE
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="supportsBootloader" type="string">
+            <annotation>
+               <documentation>
+                  Indicates whether or not the image can support a bootloader 
+                 along side it on the chip. Defaults to false.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="auxpath" type="string">
+            <annotation>
+               <documentation>
+                  An additional path which may be used to create the 
+                  complete image.
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="resource"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="chipId" type="string">
+            <annotation>
+               <documentation>
+                  Represents the chip that this binary image has been 
+                  compiled for (ie. em260, em250, avr32, msp430, etc...)
+                  Defaults to UNKNOWN
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="boardType" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Represents the board that this binary image has been 
+                  compiled for.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="version" type="string">
+            <annotation>
+               <documentation>
+                  The version of this image.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="application" type="string">
+            <annotation>
+               <documentation>
+                  Represents the application interface that this image 
+                  implements
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="description" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="apiInfo"/>
+      </appInfo>
+      <documentation>
+         [Enter API information here.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="since"/>
+      </appInfo>
+      <documentation>
+         [Enter the first release in which this extension point appears.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="examples"/>
+      </appInfo>
+      <documentation>
+         [Enter extension point usage example here.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="implementation"/>
+      </appInfo>
+      <documentation>
+         [Enter information about supplied implementation of this extension point.]
+      </documentation>
+   </annotation>
+
+
+</schema>

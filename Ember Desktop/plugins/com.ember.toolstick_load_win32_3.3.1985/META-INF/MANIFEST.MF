@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Toolstick Loader Fragment for Windows
+Bundle-SymbolicName: com.ember.toolstick_load_win32
+Bundle-Version: 3.3.1985
+Bundle-Vendor: Silicon Laboratories, Inc.
+Fragment-Host: com.ember.toolstick;bundle-version="1.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Eclipse-PlatformFilter: (& (osgi.ws=win32) (osgi.os=win32))
